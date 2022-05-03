@@ -1,0 +1,17 @@
+.DS_Store
+node_modules
+rest
+_DTO
+_collections
+.validation.json
+preferences.json
+# desc.json
+*esc.json
+# request_schema.json
+*equest_schema.json
+# response_schema.json
+*esponse_schema.json
+# error.json
+*rror.json
+# empty.json
+*mpty.json
