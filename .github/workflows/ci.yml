@@ -14,12 +14,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      CI_SSH_PUBLIC_KEY: ${{ secrets.CI_SSH_PUBLIC_KEY}}
-      CI_SSH_PRIVATE_KEY: ${{ secrets.CI_SSH_PRIVATE_KEY}}
-      ARTIFACTORY_USERNAME: ${{ github.actor }}
-      ARTIFACTORY_PASSCODE: ${{ secrets.GITHUB_TOKEN }}
-      DOCKER_TOKEN: ${{secrets.DOCKER_TOKEN}}
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 11
