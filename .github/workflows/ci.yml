@@ -21,8 +21,6 @@ jobs:
         with:
           java-version: "11"
           distribution: "temurin"
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
       - name: docker build
         uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
         with:
