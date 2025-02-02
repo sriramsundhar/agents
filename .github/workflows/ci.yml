@@ -1,5 +1,7 @@
 name: Java CI with Gradle
-
+concurrency:
+  group: ${{ github.event_name }}-${{ github.repository }}-${{ github.ref_name }}
+  cancel-in-progress: true
 on:
   push:
     branches: [main]
@@ -12,6 +14,10 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      ARTIFACTORY_USERNAME: ${{ github.actor }}
+      ARTIFACTORY_PASSCODE: ${{ secrets.GITHUB_TOKEN }}
+      DOCKER_TOKEN: ${{secrets.DOCKER_TOKEN}}
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 11
