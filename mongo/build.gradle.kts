@@ -10,4 +10,6 @@ docker {
     name = "sriramsundhar/${project.name}"
     tag("latest", "sriramsundhar/${project.name}:latest")
     tag("${project.version}", "sriramsundhar/${project.name}:${project.version}")
+    copySpec.from("sync").into("sync")
+
 }
