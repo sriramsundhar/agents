@@ -8,9 +8,9 @@ do
     docker run --rm \
         -v $PWD/collectionQueries:/tmp/collectionQueries \
         -v $PWD/mongoLocal:/tmp/mongoLocal \
-        mongo:5-focal mongodump \
+        mongo:8 mongodump \
             -v \
-            --uri="mongodb+srv://$MONGO_DB_USER_NAME:$MONGO_DB_PASSWORD@staging-dw-cluster.nnvqt.mongodb.net/dw" \
+            --uri="mongodb+srv://$MONGO_DB_USER_NAME:$MONGO_DB_PASSWORD@$MONGO_HOST_NAME/dw" \
             --db dw \
             --username $MONGO_DB_USER_NAME \
             --password $MONGO_DB_PASSWORD \
