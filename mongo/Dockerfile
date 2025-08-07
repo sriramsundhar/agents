@@ -1,4 +1,4 @@
-FROM mongo:5.0.26
+FROM mongo:8
 COPY ./sync/keyfile /data/replica.key
 COPY ./sync/mongoLocal/dw/* /tmp/dw/
 COPY ./sync/scripts/restore.sh /docker-entrypoint-initdb.d/restore.sh

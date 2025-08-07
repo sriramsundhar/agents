@@ -27,7 +27,7 @@ jobs:
           arguments: docker
 
   release:
-    if: startsWith(github.event.head_commit.message, 'Gradle Release Plugin') != true && github.ref == 'refs/heads/main'
+    if: startsWith(github.event.head_commit.message, 'Gradle Release Plugin') != true && github.ref_name == 'main'
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -44,11 +44,13 @@ jobs:
           distribution: "temurin"
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
-
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: sriramsundhar
+          password: ${{ secrets.DOCKER_TOKEN }}
       - name: Publish
         run: |
-          echo "dockerlogin"
-          docker login -u sriramsundhar -p ${DOCKER_TOKEN}
           echo "setup ssh agent"
           eval `ssh-agent -s`
           echo "setup"
